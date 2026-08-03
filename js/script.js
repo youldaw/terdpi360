@@ -28,6 +28,11 @@ document.getElementById("zoomOut").onclick = () => {
     viewer.setHfov(viewer.getHfov() + 10);
 };
 
+// Home
+document.getElementById("home").onclick = () => {
+    viewer.loadScene("room1");
+};
+
 //==============================
 // FULLSCREEN
 //==============================
@@ -72,99 +77,6 @@ panorama.addEventListener("wheel",(e)=>{
     updateView();
 
 });
-
-const viewer = pannellum.viewer("panorama", {
-    default: {
-        firstScene: "room1",
-        autoLoad: true
-    },
-
-    scenes: {
-        room1: {
-            panorama: "img/2-bino.jpg",
-            hfov: 120, // Uzoqroq ko'rinish
-            pitch: 11, // Boshlanishida sal tepaga qaraydi
-            hotSpots: [{
-                pitch: 1,
-                yaw: 0,
-                type: "scene",
-                text: "Fayaga kirish",
-                sceneId: "room2"
-            }]
-        },
-
-        room2: {
-            panorama: "img/2-bino-faya.jpg",
-            hfov: 120,
-            hotSpots: [
-                {
-                    pitch: -2,
-                    yaw: -65,
-                    type: "scene",
-                    text: "Fayadan chapga",
-                    sceneId: "room3"
-                },
-                {
-                    pitch: -2,
-                    yaw: 60,
-                    type: "scene",
-                    text: "Fayadan o'ngga",
-                    sceneId: "room5"
-                }
-            ]
-        },
-
-        room3: {
-            panorama: "img/faya-chap2.jpg",
-            hfov: 120,
-            hotSpots: [{
-                pitch: -10,
-                yaw: 182,
-                type: "scene",
-                text: "Chap tomon oxiri",
-                sceneId: "room4"
-            }]
-        },
-        room4: {
-            panorama: "img/faya-chap.jpg",
-            hfov: 120,
-            hotSpots: [{
-                pitch: 0,
-                yaw: 0,
-                type: "scene",
-                text: "Tashqariga qaytish",
-                sceneId: "room1"
-            }]
-        },
-
-        // o'ng tomon
-
-        room5: {
-            panorama: "img/faya-right.jpg",
-            hfov: 120,
-            hotSpots: [{
-                pitch: 0,
-                yaw: 0,
-                type: "scene",
-                text: "Tashqariga qaytish",
-                sceneId: "room6"
-            }]
-        },
-        room6: {
-            panorama: "img/faya-right-oxiri.jpg",
-            hfov: 120,
-            hotSpots: [{
-                pitch: 0,
-                yaw: 0,
-                type: "scene",
-                text: "Tashqariga qaytish",
-                sceneId: "room1"
-            }]
-        }
-
-    }
-});
-
 
 //==============================
 // MARKAZ HAQIDA MODAL
@@ -299,3 +211,126 @@ function openRoom(scene){
     roomsModal.style.display = "none";
 
 }
+
+
+// ==============================
+// XONANI OCHISH (URL orqali)
+// ==============================
+const viewer = pannellum.viewer("panorama", {
+    default: {
+        firstScene: "room1",
+        autoLoad: true
+    },
+
+    scenes: {
+        room1: {
+            panorama: "img/2-bino.jpg",
+            hfov: 120, // Uzoqroq ko'rinish
+            pitch: 11, // Boshlanishida sal tepaga qaraydi
+            hotSpots: [{
+                pitch: 1,
+                yaw: 0,
+                type: "scene",
+                text: "Fayaga kirish",
+                sceneId: "room2"
+            }]
+        },
+
+        room2: {
+            panorama: "img/2-bino-faya.jpg",
+            hfov: 120,
+            hotSpots: [
+                {
+                    pitch: -2,
+                    yaw: -65,
+                    type: "scene",
+                    text: "Fayadan chapga",
+                    sceneId: "room3"
+                },
+                {
+                    pitch: -2,
+                    yaw: 60,
+                    type: "scene",
+                    text: "Fayadan o'ngga",
+                    sceneId: "room5"
+                }
+            ]
+        },
+
+        room3: {
+            panorama: "img/faya-chap2.jpg",
+            hfov: 120,
+            hotSpots: [{
+                pitch: -10,
+                yaw: 182,
+                type: "scene",
+                text: "Chap tomon oxiri",
+                sceneId: "room4"
+            }]
+        },
+        room4: {
+            panorama: "img/faya-chap.jpg",
+            hfov: 120,
+            hotSpots: [{
+                pitch: 0,
+                yaw: 0,
+                type: "scene",
+                text: "Fayaga qaytish",
+                sceneId: "room2"
+            }]
+        },
+
+        // o'ng tomon
+
+        room5: {
+            panorama: "img/faya-right.jpg",
+            hfov: 120,
+            hotSpots: [{
+                pitch: -8,
+                yaw: -2,
+                type: "scene",
+                text: "Karidorning oxiri",
+                sceneId: "room6"
+            }]
+        },
+        room6: {
+            panorama: "img/faya-right-oxiri.jpg",
+            hfov: 120,
+            hotSpots: [{
+                pitch: 0,
+                yaw: 0,
+                type: "scene",
+                text: "101-xonaga kirish",
+                sceneId: "room7"
+            }]
+        },
+        room7: {
+            panorama: "img/101xona.jpg",
+            hfov: 120,
+            hotSpots: [{
+                pitch: -10,
+                yaw: -80,
+                type: "scene",
+                text: "Chiqish",
+                sceneId: "room6"
+            }]
+        }
+
+    }
+});
+
+
+viewer.on("load", function () {
+
+    setTimeout(() => {
+
+        viewer.lookAt(
+            0,
+            0,
+            140,
+            1500
+        );
+
+    }, 300);
+
+});
