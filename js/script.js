@@ -291,6 +291,20 @@ const viewer = pannellum.viewer("panorama", {
                 type: "scene",
                 text: "Karidorning oxiri",
                 sceneId: "room6"
+            },
+            {
+                pitch: -6,
+                yaw: -92,
+                type: "scene",
+                text: "Koridor chap",
+                sceneId: "room8"
+            },
+            {
+                pitch: -2,
+                yaw: 182,
+                type: "scene",
+                text: "Fayaga qaytish",
+                sceneId: "room5"
             }]
         },
         room6: {
@@ -302,7 +316,15 @@ const viewer = pannellum.viewer("panorama", {
                 type: "scene",
                 text: "101-xonaga kirish",
                 sceneId: "room7"
-            }]
+            },
+            {
+                pitch: -2,
+                yaw: 182,
+                type: "scene",
+                text: "Ortga qaytish",
+                sceneId: "room5"
+            }
+        ]
         },
         room7: {
             panorama: "img/101xona.jpg",
@@ -313,6 +335,17 @@ const viewer = pannellum.viewer("panorama", {
                 type: "scene",
                 text: "Chiqish",
                 sceneId: "room6"
+            }]
+        },
+        room8: {
+            panorama: "img/arm-koridor.jpg",
+            hfov: 120,
+            hotSpots: [{
+                pitch: -10,
+                yaw: -80,
+                type: "scene",
+                text: "Ortga qaytish",
+                sceneId: "room5"
             }]
         }
 
